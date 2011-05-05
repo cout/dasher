@@ -2,5 +2,9 @@
 
 require 'dash/dash'
 
-dash_main(*ARGV)
+args = [$0]
+args.concat(ARGV)
+p args
+
+dash_main(*args)
 
