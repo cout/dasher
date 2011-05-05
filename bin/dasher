@@ -4,7 +4,6 @@ require 'dash/dash'
 
 args = [$0]
 args.concat(ARGV)
-p args
 
-dash_main(*args)
+exit dash_main(*args)
 
