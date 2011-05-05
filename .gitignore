@@ -13,4 +13,5 @@ ext/dash/nodes.h
 ext/dash/syntax.c
 ext/dash/syntax.h
 ext/dash/token.h
+ext/dash/dash.so
 
