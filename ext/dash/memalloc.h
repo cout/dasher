@@ -34,6 +34,8 @@
  *	@(#)memalloc.h	8.2 (Berkeley) 5/4/95
  */
 
+#include "shell.h"
+
 #include <stddef.h>
 
 struct stackmark {

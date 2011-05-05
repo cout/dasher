@@ -29,6 +29,9 @@
  * SUCH DAMAGE.
  */
 
+#include "output.h"
+#include "memalloc.h"
+
 #include <sys/types.h>
 
 #include <ctype.h>
