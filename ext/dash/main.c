@@ -79,7 +79,7 @@ extern int etext();
 STATIC void read_profile(const char *);
 STATIC char *find_dot_file(char *);
 static int cmdloop(int);
-int main(int, char **);
+int dash_main(int, char **);
 
 /*
  * Main routine.  We initialize things, parse the arguments, execute
@@ -90,7 +90,7 @@ int main(int, char **);
  */
 
 int
-main(int argc, char **argv)
+dash_main(int argc, char **argv)
 {
 	char *shinit;
 	volatile int state;
