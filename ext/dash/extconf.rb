@@ -32,6 +32,8 @@ have_func('sigsetmask', 'signal.h')
 have_func('getrlimit', 'sys/resource.h')
 have_func('imaxdiv', 'stdlib.h')
 
+have_library('edit')
+
 # TODO: __alias__ - HAVE_ATTRIBUTE_ALIAS / HAVE_ALIAS_ATTRIBUTE
 
 create_makefile('dash')
