@@ -1,0 +1,16 @@
+*~
+.*.swp
+*.o
+ext/dash/Makefile
+ext/dash/builtins.c
+ext/dash/builtins.def
+ext/dash/builtins.h
+ext/dash/helpers/mknodes
+ext/dash/helpers/mksyntax
+ext/dash/mkmf.log
+ext/dash/nodes.c
+ext/dash/nodes.h
+ext/dash/syntax.c
+ext/dash/syntax.h
+ext/dash/token.h
+
