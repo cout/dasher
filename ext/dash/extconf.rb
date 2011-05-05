@@ -7,6 +7,7 @@ $srcs = Set.new(Dir['*.c'])
 $srcs << 'syntax.c'
 $srcs << 'nodes.c'
 $srcs << 'builtins.c'
+$srcs << 'signames.c'
 
 $objs = $srcs.map { |f| f.sub(/\.c$/, '.o') }
 
@@ -59,6 +60,9 @@ helpers/mknodes: helpers/mknodes.c parser.h
 
 token.h: helpers/mktokens
 \tsh helpers/mktokens
+
+signames.c: helpers/mksignames
+\t./helpers/mksignames
 
 SRCS += syntax.c nodes.c builtins.c
 
