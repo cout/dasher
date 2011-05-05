@@ -14,4 +14,7 @@ ext/dash/syntax.c
 ext/dash/syntax.h
 ext/dash/token.h
 ext/dash/dash.so
-
+ext/dash/helpers/mkinit
+ext/dash/helpers/mksignames
+ext/dash/init.c
+ext/dash/signames.c
