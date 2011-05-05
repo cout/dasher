@@ -18,3 +18,4 @@ ext/dash/helpers/mkinit
 ext/dash/helpers/mksignames
 ext/dash/init.c
 ext/dash/signames.c
+test/dash/rt/new/*
