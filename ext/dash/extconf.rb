@@ -1,6 +1,14 @@
 require 'mkmf'
+require 'set'
 
 $defs << '-D_GNU_SOURCE'
+
+$srcs = Set.new(Dir['*.c'])
+$srcs << 'syntax.c'
+$srcs << 'nodes.c'
+$srcs << 'builtins.c'
+
+$objs = $srcs.map { |f| f.sub(/\.c$/, '.o') }
 
 have_header('alloca.h')
 have_header('histedit.h')
@@ -53,7 +61,6 @@ token.h: helpers/mktokens
 \tsh helpers/mktokens
 
 SRCS += syntax.c nodes.c builtins.c
-OBJS += syntax.o nodes.o builtins.o
 
 $(OBJS): syntax.h nodes.h builtins.h token.h
 
