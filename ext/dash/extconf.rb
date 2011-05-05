@@ -3,6 +3,7 @@ require 'mkmf'
 $defs << '-D_GNU_SOURCE'
 
 have_header('alloca.h')
+have_header('histedit.h')
 
 have_func('getpwnam', 'pwd.h')
 have_func('glob', 'glob.h')
@@ -30,11 +31,32 @@ File.open('Makefile', 'a') do |makefile|
 
 makefile.write <<END
 
-syntax.h: helpers/mksyntax
+builtins.c builtins.h: helpers/mkbuiltins builtins.def
+\tsh ./helpers/mkbuiltins builtins.def
+
+builtins.def: builtins.def.in
+\t$(CC) -E -x c -o $@ $<
+
+syntax.c syntax.h: helpers/mksyntax
 \t./helpers/mksyntax
 
 helpers/mksyntax: helpers/mksyntax.c parser.h
 \t$(CC) $(CFLAGS) -I. helpers/mksyntax.c -o helpers/mksyntax
+
+nodes.c nodes.h: helpers/mknodes nodetypes nodes.c.pat
+\t./helpers/mknodes nodetypes nodes.c.pat
+
+helpers/mknodes: helpers/mknodes.c parser.h
+\t$(CC) $(CFLAGS) -I. helpers/mknodes.c -o helpers/mknodes
+
+token.h: helpers/mktokens
+\tsh helpers/mktokens
+
+SRCS += syntax.c nodes.c builtins.c
+OBJS += syntax.o nodes.o builtins.o
+
+$(OBJS): syntax.h nodes.h builtins.h token.h
+
 END
 
 end
