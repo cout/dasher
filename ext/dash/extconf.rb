@@ -3,11 +3,15 @@ require 'set'
 
 $defs << '-D_GNU_SOURCE'
 
-$srcs = Set.new(Dir['*.c'])
-$srcs << 'syntax.c'
-$srcs << 'nodes.c'
-$srcs << 'builtins.c'
-$srcs << 'signames.c'
+$dash_srcs = Set.new(Dir['*.c'])
+$dash_srcs << 'syntax.c'
+$dash_srcs << 'nodes.c'
+$dash_srcs << 'builtins.c'
+$dash_srcs << 'signames.c'
+$dash_srcs.delete('init.c')
+
+$srcs = $dash_srcs.dup.to_a
+$srcs << 'init.c'
 
 $objs = $srcs.map { |f| f.sub(/\.c$/, '.o') }
 
@@ -66,7 +70,8 @@ token.h: helpers/mktokens
 signames.c: helpers/mksignames
 \t./helpers/mksignames
 
-SRCS += syntax.c nodes.c builtins.c
+init.c: helpers/mkinit
+\t./helpers/mkinit #{$dash_srcs.to_a.join(' ')}
 
 $(OBJS): syntax.h nodes.h builtins.h token.h
 
