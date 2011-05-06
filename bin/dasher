@@ -1,9 +1,18 @@
 #!/usr/bin/env ruby
 
+module Dash
+  module Builtins
+    def foo(args)
+      puts "FOO"
+    end
+    module_function :foo
+  end
+end
+
 require 'dash/dash'
 
 args = [$0]
 args.concat(ARGV)
 
-exit dash_main(*args)
+exit Dash.main(*args)
 

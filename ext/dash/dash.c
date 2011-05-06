@@ -1,6 +1,9 @@
 #include "ruby.h"
 #include "main.h"
 
+VALUE rb_mDash;
+VALUE rb_cBuiltins;
+
 VALUE rb_dash_main(int argc, VALUE * argv, VALUE self)
 {
   int j;
@@ -24,6 +27,9 @@ VALUE rb_dash_main(int argc, VALUE * argv, VALUE self)
 
 void Init_dash()
 {
-  rb_define_global_function("dash_main", rb_dash_main, -1);
+  rb_mDash = rb_define_module("Dash");
+  rb_cBuiltins = rb_define_module_under(rb_mDash, "Builtins");
+
+  rb_define_module_function(rb_mDash, "main", rb_dash_main, -1);
 }
 

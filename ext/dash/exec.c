@@ -38,6 +38,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <paths.h>
+#include <ruby.h>
 
 /*
  * When commands are first encountered, they are entered in a hash table.
@@ -273,7 +274,43 @@ printentry(struct tblentry *cmdp)
 	out1fmt(snlfmt, cmdp->rehash ? "*" : nullstr);
 }
 
+extern VALUE rb_cBuiltins;
 
+int call_ruby_builtin(int argc, char * argv[])
+{
+  int j;
+  VALUE result;
+  VALUE ruby_argv = rb_ary_new();
+
+  for(j = 0; j < argc; ++j)
+  {
+    rb_ary_push(ruby_argv, rb_str_new2(argv[j]));
+  }
+
+  /* TODO: catch exceptions */
+  result = rb_funcall(rb_cBuiltins, rb_intern(argv[0]), 1, ruby_argv);
+
+  return (result == Qnil ? 0 : NUM2INT(result));
+}
+
+struct builtincmd ruby_builtincmd = {
+  "",
+  call_ruby_builtin,
+  BUILTIN_REGULAR
+};
+
+struct builtincmd * ruby_builtin(char const * name)
+{
+  /* TODO: not wise to use rb_intern here */
+  if (rb_respond_to(rb_cBuiltins, rb_intern(name)))
+  {
+    return &ruby_builtincmd;
+  }
+  else
+  {
+    return 0;
+  }
+}
 
 /*
  * Resolve a command name.  If you change this routine, you may have to
@@ -342,6 +379,12 @@ find_command(char *name, struct cmdentry *entry, int act, const char *path)
 			/* if not invalidated by cd, we're done */
 			goto success;
 	}
+
+  bcmd = ruby_builtin(name);
+  if (bcmd)
+  {
+    goto builtin_success;
+  }
 
 	/* If %builtin not in path, check for builtin next */
 	bcmd = find_builtin(name);

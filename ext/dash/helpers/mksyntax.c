@@ -75,11 +75,11 @@ struct synclass synclass[] = {
  * you may have to change the definition of the is_in_name macro.
  */
 struct synclass is_entry[] = {
-	{ "ISDIGIT",	"a digit" },
-	{ "ISUPPER",	"an upper case letter" },
-	{ "ISLOWER",	"a lower case letter" },
-	{ "ISUNDER",	"an underscore" },
-	{ "ISSPECL",	"the name of a special parameter" },
+	{ "D_ISDIGIT",	"a digit" },
+	{ "D_ISUPPER",	"an upper case letter" },
+	{ "D_ISLOWER",	"a lower case letter" },
+	{ "D_ISUNDER",	"an underscore" },
+	{ "D_ISSPECL",	"the name of a special parameter" },
 	{ NULL, 	NULL }
 };
 
@@ -203,11 +203,11 @@ main(int argc, char **argv)
 	print("arisyntax");
 	filltable("0");
 	fputs("\n/* character classification table */\n", cfile);
-	add("0123456789", "ISDIGIT");
-	add("abcdefghijklmnopqrstucvwxyz", "ISLOWER");
-	add("ABCDEFGHIJKLMNOPQRSTUCVWXYZ", "ISUPPER");
-	add("_", "ISUNDER");
-	add("#?$!-*@", "ISSPECL");
+	add("0123456789", "D_ISDIGIT");
+	add("abcdefghijklmnopqrstucvwxyz", "D_ISLOWER");
+	add("ABCDEFGHIJKLMNOPQRSTUCVWXYZ", "D_ISUPPER");
+	add("_", "D_ISUNDER");
+	add("#?$!-*@", "D_ISSPECL");
 	print("is_type");
 	exit(0);
 	/* NOTREACHED */
@@ -301,7 +301,7 @@ static char *macro[] = {
 	"#define is_alpha(c)\tisalpha((unsigned char)(c))\n",
 	"#define is_name(c)\t((c) == '_' || isalpha((unsigned char)(c)))\n",
 	"#define is_in_name(c)\t((c) == '_' || isalnum((unsigned char)(c)))\n",
-	"#define is_special(c)\t((is_type+SYNBASE)[(signed char)(c)] & (ISSPECL|ISDIGIT))\n",
+	"#define is_special(c)\t((is_type+SYNBASE)[(signed char)(c)] & (D_ISSPECL|D_ISDIGIT))\n",
 	NULL
 };
 
