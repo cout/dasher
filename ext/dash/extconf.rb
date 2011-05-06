@@ -50,7 +50,7 @@ builtins.c builtins.h: helpers/mkbuiltins builtins.def
 \tsh ./helpers/mkbuiltins builtins.def
 
 builtins.def: builtins.def.in
-\t$(CC) -E -x c -o $@ $<
+\t$(CC) $(CPPFLAGS) -E -x c -o $@ $<
 
 syntax.c syntax.h: helpers/mksyntax
 \t./helpers/mksyntax
