@@ -64,7 +64,6 @@ dotcmd		-s .
 echocmd		echo
 evalcmd		-s eval
 execcmd		-s exec
-exitcmd		-s exit
 exportcmd	-as export -as readonly
 getoptscmd	-u getopts
 hashcmd		hash

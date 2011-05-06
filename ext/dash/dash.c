@@ -1,5 +1,6 @@
 #include "ruby.h"
 #include "main.h"
+#include "jobs.h"
 
 VALUE rb_mDash;
 VALUE rb_cBuiltins;
@@ -25,11 +26,17 @@ VALUE rb_dash_main(int argc, VALUE * argv, VALUE self)
   return INT2NUM(result);
 }
 
+VALUE rb_dash_stoppedjobs(VALUE self)
+{
+  return INT2NUM(stoppedjobs());
+}
+
 void Init_dash()
 {
   rb_mDash = rb_define_module("Dash");
   rb_cBuiltins = rb_define_module_under(rb_mDash, "Builtins");
 
   rb_define_module_function(rb_mDash, "main", rb_dash_main, -1);
+  rb_define_module_function(rb_mDash, "stoppedjobs", rb_dash_stoppedjobs, 0);
 }
 

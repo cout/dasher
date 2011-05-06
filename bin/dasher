@@ -19,6 +19,15 @@ module Dash
       return 1
     end
     module_function :false
+
+    def exit(args)
+      if args.length > 1 then
+        super(args[1].to_i)
+      else
+        super()
+      end
+    end
+    module_function :exit
   end
 end
 

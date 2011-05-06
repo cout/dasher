@@ -338,15 +338,3 @@ dotcmd(int argc, char **argv)
 	}
 	return status;
 }
-
-
-int
-exitcmd(int argc, char **argv)
-{
-	if (stoppedjobs())
-		return 0;
-	if (argc > 1)
-		exitstatus = number(argv[1]);
-	exraise(EXEXIT);
-	/* NOTREACHED */
-}
