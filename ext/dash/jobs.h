@@ -91,6 +91,8 @@ extern int jobctl;		/* true if doing job control */
 #define jobctl 0
 #endif
 
+union node;
+
 void setjobctl(int);
 int killcmd(int, char **);
 int fgcmd(int, char **);

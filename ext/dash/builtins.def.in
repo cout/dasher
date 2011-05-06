@@ -60,7 +60,6 @@ histcmd		-u fc
 breakcmd	-s break -s continue
 cdcmd		-u cd chdir
 commandcmd	-u command
-dotcmd		-s .
 echocmd		echo
 evalcmd		-s eval
 execcmd		-s exec

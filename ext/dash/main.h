@@ -50,7 +50,5 @@ extern int *dash_errno;
 #endif
 
 void readcmdfile(char *);
-int dotcmd(int, char **);
-int exitcmd(int, char **);
 
 int dash_main(int, char **);

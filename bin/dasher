@@ -28,6 +28,22 @@ module Dash
       end
     end
     module_function :exit
+
+    def __dot(args)
+      if args.length > 1 then
+        fullname = Dash.find_dot_file(args[1])
+        Dash.setinputfile(fullname, Dash::INPUT_PUSH_FILE)
+        Dash.setcommandname(fullname)
+        Dash.cmdloop(0)
+        Dash.popfile()
+        return Dash.exitstatus()
+      else
+        return 0
+      end
+    end
+
+    alias_method ".", :__dot
+    module_function "."
   end
 end
 
