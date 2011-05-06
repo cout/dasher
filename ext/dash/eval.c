@@ -1059,20 +1059,6 @@ returncmd(int argc, char **argv)
 
 
 int
-falsecmd(int argc, char **argv)
-{
-	return 1;
-}
-
-
-int
-truecmd(int argc, char **argv)
-{
-	return 0;
-}
-
-
-int
 execcmd(int argc, char **argv)
 {
 	if (argc > 1) {

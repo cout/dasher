@@ -66,7 +66,6 @@ evalcmd		-s eval
 execcmd		-s exec
 exitcmd		-s exit
 exportcmd	-as export -as readonly
-falsecmd	-u false
 getoptscmd	-u getopts
 hashcmd		hash
 jobscmd		-u jobs
@@ -79,7 +78,6 @@ setcmd		-s set
 shiftcmd	-s shift
 timescmd	-s times
 trapcmd		-s trap
-truecmd		-s : -u true
 typecmd		type
 umaskcmd	-u umask
 unaliascmd	-u unalias

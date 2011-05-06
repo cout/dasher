@@ -6,6 +6,19 @@ module Dash
       puts "FOO"
     end
     module_function :foo
+
+    def true(args)
+      return 0
+    end
+    module_function :true
+
+    alias_method ":", :true
+    module_function ":"
+
+    def false(args)
+      return 1
+    end
+    module_function :false
   end
 end
 
