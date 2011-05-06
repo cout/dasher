@@ -1,0 +1,109 @@
+Loaded suite ./dash_tests
+Started
+test_1(DashTests): .
+test_10(DashTests): .
+test_11(DashTests): .
+test_12(DashTests): .
+test_13(DashTests): .
+test_14(DashTests): .
+test_15(DashTests): .
+test_16(DashTests): .
+test_161606(DashTests): .
+test_165056(DashTests): .
+test_170247(DashTests): .
+test_187896(DashTests): .
+test_6(DashTests): .
+test_8(DashTests): .
+test_aliases(DashTests): .
+test_ariexp(DashTests): .
+test_builtins(DashTests): F
+test_case-stmt(DashTests): .
+test_cd(DashTests): .
+test_commsubst(DashTests): F
+test_dotcmd(DashTests): .
+test_eflag(DashTests): .
+test_exec(DashTests): .
+test_exec-fd-leak(DashTests): .
+test_exitstatus(DashTests): F
+test_exp-tests(DashTests): F
+test_export(DashTests): .
+test_findcommand(DashTests): .
+test_for-stmt(DashTests): /home/cout/git/dasher/test/dash/rt/scripts/for-stmt: 2: Syntax error: "in" unexpected (expecting "do")
+F
+test_getopts(DashTests): .
+test_here-doc(DashTests): .
+test_input(DashTests): .
+test_jobs(DashTests): F
+test_minusc(DashTests): /proc/30400/exe: No such file or directory -- echo $0 > /dev/null (LoadError)
+/proc/30400/exe: No such file or directory -- trap "echo EXIT; echo 2EXIT;" EXIT; return (LoadError)
+F
+test_paramexp(DashTests): /home/cout/git/dasher/test/dash/rt/scripts/paramexp: 50: Syntax error: Unterminated quoted string
+F
+test_patexp(DashTests): F
+test_pathexp(DashTests): .
+test_pattern-matching(DashTests): .
+test_printf(DashTests): F
+test_redir(DashTests): .
+test_test(DashTests): .
+test_tildeexp(DashTests): .
+test_trap(DashTests): F
+test_uflag(DashTests): .
+
+Finished in 24.321586 seconds.
+
+  1) Failure:
+test_builtins(DashTests) [./dash_tests.rb:20]:
+<"hi\ntime(seconds)        unlimited\nfile(blocks)         unlimited\ndata(kbytes)         unlimited\nstack(kbytes)        8192\ncoredump(blocks)     unlimited\nmemory(kbytes)       unlimited\nlocked memory(kbytes) unlimited\nprocess              unlimited\nnofiles              1024\nvmemory(kbytes)      unlimited\nlocks                unlimited\n"> expected but was
+<"hi\ntime(seconds)        unlimited\nfile(blocks)         unlimited\ndata(kbytes)         unlimited\nstack(kbytes)        8192\ncoredump(blocks)     unlimited\nmemory(kbytes)       unlimited\nlocked memory(kbytes) 64\nprocess              unlimited\nnofiles              1024\nvmemory(kbytes)      unlimited\nlocks                unlimited\n">.
+
+  2) Failure:
+test_commsubst(DashTests) [./dash_tests.rb:20]:
+<"accb$\n"> expected but was
+<"ab$\n">.
+
+  3) Failure:
+test_exitstatus(DashTests) [./dash_tests.rb:20]:
+<"0\n0\n1\n0\n1\n1\n0\n1\n21\n2\n2\n0\n0\n2\n2\n"> expected but was
+<"0\n0\n1\n0\n1\n1\n0\n1\n21\n0\n0\n2\n0\n0\n2\n">.
+
+  4) Failure:
+test_exp-tests(DashTests) [./dash_tests.rb:20]:
+<"expect <^A>\n<^A> \nexpect <^A>\n<^A> \nexpect <^B>\n<^B> \nexpect <^B>\n<^B> \nexpect <^A>\n<^A> \nexpect <^B>\n<^B> \nexpect <abcdefgh>\n<abcdefgh> \nexpect <abcdefgh>\n<abcdefgh> \nexpect <abcdefgh>\n<abcdefgh> \nexpect <abcdefgh>\n<abcdefgh> \nexpect <abcd>\n<abcd> \nexpect <abcd>\n<abcd> \nexpect nothing\n\nexpect < >\n< > \nexpect <-->\n<--> \nexpect <>\n<> \nexpect <>\n<> \nexpect <>\n<> \nexpect <>\n<> \nexpect <>\n<> \nexpect <>\n<> \nexpect <abc>\n<abc> \nexpect <abc>\n<abc> \nexpect <abc>\n<abc> \nexpect <abc>\n<abc> \nexpect <abcdef>\n<abcdef> \nexpect <abcdef>\n<abcdef> \nexpect <^A>\n<^A> \nexpect <^B>\n<^B> \nexpect <^A>\n<^A> \nexpect <^B>\n<^B> \nexpect <^A>\n<^A> \nexpect <^B>\n<^B> \nexpect nothing\n\nexpect <>\n<> \nexpect <>\n<> \nexpect <>\n<> \nexpect <>\n<> \nexpect <Hello World!>\n<Hello world!> \nexpect <`>\n<`> \nexpect <\">\n<\"> \nexpect <\\^A>\n<\\^A> \nexpect <\\$>\n<\\$> \nexpect <\\\\>\n<\\\\> \nexpect <a> <b>\n<a> <b> \nexpect <^A> <^B>\n<^A> <^B> \nexpect <**>\n<**> \nexpect <\\.\\./*/>\n<\\.\\./*/> \nexpect <^A^B^A^B>\n<^A^B^A^B> \nexpect <^A^A>\n<^A^A> \nexpect <^A^B>\n<^A^B> \nexpect <^A^A^B>\n<^A^A^B> \nexpect <  abc> <def> <ghi> <jkl  >\n<  abc> <def> <ghi> <jkl  > \nexpect <  abc> <def> <ghi> <jkl  >\n<  abc> <def> <ghi> <jkl  > \nexpect <--abc> <def> <ghi> <jkl-->\n<--abc> <def> <ghi> <jkl--> \nexpect <a b> <cd> <ef> <gh>\n<a b> <cd> <ef> <gh> \nexpect <a b> <cd> <ef> <gh>\n<a b> <cd> <ef> <gh> \nexpect <a b> <cd> <ef> <gh>\n<a b> <cd> <ef> <gh> \nexpect <  >\n<  > \nexpect < - >\n< - > \nexpect </^root:/{s/^[^:]*:[^:]*:\\([^:]*\\).*$/\\1/>\n</^root:/{s/^[^:]*:[^:]*:\\([^:]*\\).*$/\\1/> \nexpect <foo bar>\n<foo bar> \nexpect <foo> <bar>\n<foo> <bar> \nexpect <abc>\n<abc> \nexpect <abc>\n<abc> \nexpect <posix>\n<posix> \nexpect <10>\n<10> \nexpect <file.o>\n<file.o> \nexpect <posix>\n<posix> \nexpect </src/cmd>\n</src/cmd> \nexpect <three>\n<three> \nexpect <abcdef>\n<abcdef> \nexpect <abcdef>\n<abcdef> \nexpect <abcdef>\n<abcdef> \nexpect <abcdef>\n<abcdef> \nexpect <\\$x>\n<\\$x> \nexpect <$x>\n<$x> \nexpect <\\$x>\n<\\$x> \nexpect <abc> <def> <ghi> <jkl>\n<abc> <def> <ghi> <jkl> \nexpect <abc def ghi jkl>\n<abc def ghi jkl> \nexpect <abc:def ghi:jkl>\n<abc:def ghi:jkl> \nexpect <abc> <def ghi> <jkl>\n<abc> <def ghi> <jkl> \nexpect <xxabc> <def ghi> <jklyy>\n<xxabc> <def ghi> <jklyy> \nexpect <abc> <def ghi> <jklabc> <def ghi> <jkl>\n<abc> <def ghi> <jklabc> <def ghi> <jkl> \nexpect <abcdef>\n<abcdef> \nexpect <bar> <> <xyz> <> <abc>\n<bar> <> <xyz> <> <abc> \nexpect <$foo>\n<$foo> \nexpect <10>\n<10> \nexpect <newline expected>\n<newline expected> \nexpect <got it>\n<got it> \nexpect <got it>\n<got it> \nexpect <one> <three> <five>\n<one> <three> <five> \nexpect <5> <5>\n<5> <5> \nexpect <3>\n<3> \nexpect <1>\n<1> \nexpect <1>\n<1> \nexpect <23>\n<23> \nexpect <23>\n<23> \nexpect <23>\n<23> \nexpect <23>\n<23> \nexpect <42>\n<42> \nexpect <\\>\n<\\> \nexpect <~>\n<~> \nexpect nothing\n\nexpect nothing\n\n"> expected but was
+<"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n">.
+
+  5) Failure:
+test_for-stmt(DashTests) [./dash_tests.rb:20]:
+<"ok\n"> expected but was
+<"">.
+
+  6) Failure:
+test_jobs(DashTests) [./dash_tests.rb:20]:
+<"Terminated\n\n"> expected but was
+<"ruby: symbol lookup error: /home/cout/git/dasher/ext/dash/dash.so: undefined symbol: WCOREDUMP\n">.
+
+  7) Failure:
+test_minusc(DashTests) [./dash_tests.rb:20]:
+<"EXIT\n2EXIT\n"> expected but was
+<"">.
+
+  8) Failure:
+test_paramexp(DashTests) [./dash_tests.rb:20]:
+<"\n\n\n\n/b/c/\n/b/c/\n/b/c/\n/b/c/\n/b/c/\n/b/c/\n/b/c/\n/b/c/*\n\\\n<>\n\n 2\n 1\nbar\nbar\nbar\nbar\n\n\n\n\n0000000 7878 8178 000a\n0000005\n10\n2\n0\n10\n1\n}\n}\n"> expected but was
+<"\n\n\n\n/b/c/\n/b/c/\n/b/c/\n/b/c/\n/b/c/\n/b/c/\n/b/c/\n/b/c/*\n\\\n<>\n\n 2\n 1\nbar\nbar\nbar}}\nbar\n\n\n\n\n0000000 000a\n0000001\n10\n2\n0\n10\n1\n''}\n">.
+
+  9) Failure:
+test_patexp(DashTests) [./dash_tests.rb:20]:
+<"/root\n/root\n/dev/null\n/dev/null\n"> expected but was
+<"/root\n/root\n/*/null\n/*/null\n">.
+
+ 10) Failure:
+test_printf(DashTests) [./dash_tests.rb:20]:
+<"3\n178\n\001\n\n0\ntest\\ test\ntest\\ test\n"> expected but was
+<"0\ntest\\ test\ntest\\ test\n">.
+
+ 11) Failure:
+test_trap(DashTests) [./dash_tests.rb:20]:
+<"trap -- '' INT\n"> expected but was
+<"trap -- '' INT\nbad\n">.
+
+44 tests, 44 assertions, 11 failures, 0 errors
