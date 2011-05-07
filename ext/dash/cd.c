@@ -63,12 +63,12 @@
 STATIC int docd(const char *, int);
 STATIC const char *updatepwd(const char *);
 STATIC char *getpwd(void);
-STATIC int cdopt(void);
+int cdopt(void);
 
-STATIC char *curdir = nullstr;		/* current working directory */
-STATIC char *physdir = nullstr;		/* physical working directory */
+char *curdir = nullstr;		/* current working directory */
+char *physdir = nullstr;		/* physical working directory */
 
-STATIC int
+int
 cdopt()
 {
 	int flags = 0;
@@ -264,22 +264,6 @@ getpwd()
 
 	sh_warnx("getcwd() failed: %s", strerror(errno));
 	return nullstr;
-}
-
-int
-pwdcmd(int argc, char **argv)
-{
-	int flags;
-	const char *dir = curdir;
-
-	flags = cdopt();
-	if (flags) {
-		if (physdir == nullstr)
-			setpwd(dir, 0);
-		dir = physdir;
-	}
-	out1fmt(snlfmt, dir);
-	return 0;
 }
 
 void

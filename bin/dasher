@@ -1,12 +1,9 @@
 #!/usr/bin/env ruby
 
+require 'optparse'
+
 module Dash
   module Builtins
-    def foo(args)
-      puts "FOO"
-    end
-    module_function :foo
-
     def true(args)
       return 0
     end
@@ -44,6 +41,26 @@ module Dash
 
     alias_method ".", :__dot
     module_function "."
+
+    def pwd(args)
+      use_physdir = false
+      opts = OptionParse.new do |opts|
+        opts.on('-P') { use_physdir = true }
+        opts.on('-L') { use_physdir = false }
+      end
+      opts.parse!(args)
+
+      dir = Dash.curdir()
+
+      if use_physdir then
+        if not Dash.physdir then
+          Dash.setpwd(dir, 0)
+        dir = Dash.physdir
+      end
+
+      $stdout.puts dir
+      $stdout.flush()
+    end
   end
 end
 

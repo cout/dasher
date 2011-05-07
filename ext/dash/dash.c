@@ -4,6 +4,7 @@
 #include "var.h"
 #include "exec.h"
 #include "eval.h"
+#include "cd.h"
 
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -102,6 +103,16 @@ VALUE rb_dash_stoppedjobs(VALUE self)
   return INT2NUM(stoppedjobs());
 }
 
+VALUE rb_dash_curdir(VALUE self)
+{
+  return rb_str_new2(curdir);
+}
+
+VALUE rb_dash_physdir(VALUE self)
+{
+  return rb_str_new2(physdir);
+}
+
 void Init_dash()
 {
   rb_mDash = rb_define_module("Dash");
@@ -115,5 +126,7 @@ void Init_dash()
   rb_define_module_function(rb_mDash, "cmdloop", rb_dash_cmdloop, 1);
   rb_define_module_function(rb_mDash, "popfile", rb_dash_popfile, 0);
   rb_define_module_function(rb_mDash, "exitstatus", rb_dash_exitstatus, 0);
+  rb_define_module_function(rb_mDash, "curdir", rb_dash_curdir, 0);
+  rb_define_module_function(rb_mDash, "physdir", rb_dash_physdir, 0);
 }
 

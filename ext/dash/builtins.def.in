@@ -69,7 +69,6 @@ hashcmd		hash
 jobscmd		-u jobs
 localcmd	-a local
 printfcmd	printf
-pwdcmd		pwd
 readcmd		-u read
 returncmd	-s return
 setcmd		-s set
